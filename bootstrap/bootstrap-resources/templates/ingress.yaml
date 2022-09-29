@@ -22,5 +22,30 @@ spec:
           service:
             name: cats
             port: 
-                number: 8001                
+                number: 8001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-grafana
+  namespace: observability
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-ci"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - grafana.{{ .Values.domain }}
+    secretName: nginx-grafana-tls
+  rules:
+  - host: grafana.{{ .Values.domain }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: observability-grafana
+            port:
+                number: 80                       
 {{- end }}
