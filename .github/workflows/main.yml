@@ -1,0 +1,50 @@
+name: setup-doks-ops
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "infrastructure/**"      
+
+env:
+  DIGITALOCEAN_CLUSTER_NAME: abhi-playground
+
+jobs:
+  doks-prerequisite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Get cluster info
+        run: echo DIGITALOCEAN_CLUSTER_ID=`doctl kubernetes cluster get $DIGITALOCEAN_CLUSTER_NAME --format ID --no-header` >> $GITHUB_ENV
+
+      - name: Update context
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 3600 ${{ env.DIGITALOCEAN_CLUSTER_ID }}
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest' 
+        id: install
+
+      - name: Install ArgoCD
+        run: |
+          namespaceStatus=$(kubectl get ns argocd -o json | jq .status.phase -r)
+          if ! [ $namespaceStatus == "Active" ]; then
+          kubectl create namespace argocd
+          kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+          fi
+
+      - name: Useful default vars
+        run: |
+          echo "Workflow name:  $GITHUB_WORKFLOW"
+          echo "Workspace:      $GITHUB_WORKSPACE"
+          echo "Event:          $GITHUB_EVENT_NAME"
+          echo "SHA:            $GITHUB_SHA"
+          echo "Ref:            $GITHUB_REF" 
+          echo ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+          echo $ARGO_PWD
+          

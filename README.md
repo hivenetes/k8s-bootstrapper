@@ -1,29 +1,8 @@
-## gitops-cluster-bootstrap
-
-<img src="images/1.png" width="450px;">
-
-This is an app-of-apps style start up repository for ArgoCD.
-
-The goal is to setup a production like set of workloads ( observability, security and example applications ).
-
-## Workloads
-
-Workloads are deployed through ArgoCD in an app-of-apps style deployment.
-Configuration of the application is done via the `bootstrap` root app that has it's own configuration within `values.yaml`. This is propagated into the child apps.
-
-When looking at the wider business context, we see how the applications in this repository can feed more broadly back into the business.
-
-<img src="images/4.png" width="1000px;">
-
-
-
-
-<img src="images/5.png" width="650px;">
-
+## Bootstrap DOKS Cluster
 
 ## Prerequisites
 
-- Spin up a Kubernetes cluster on your favourite cloud provider or hardware
+- Spin up a DOKS cluster
 
 - Setup argocd
 

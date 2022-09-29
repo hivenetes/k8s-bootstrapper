@@ -9,8 +9,6 @@ observability:
   retention: 5d
 trivy:
   enable: true
-komodor:
-  enable: false
   key: 
   clustername: 
 logging:
