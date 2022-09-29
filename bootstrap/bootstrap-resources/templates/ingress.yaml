@@ -2,15 +2,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-buzz
-  namespace: buzz
+  name: ingress-cats
+  namespace: cats
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-ci"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - buzz.{{ .Values.domain }}
+    - cats.{{ .Values.domain }}
     secretName: nginx-cats-tls
   rules:
   - host: cats.{{ .Values.domain }}
@@ -20,7 +20,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: buzz
-            port: 8080
-                number:                 
+            name: cats
+            port: 
+                number: 8001                
 {{- end }}
