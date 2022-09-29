@@ -1,17 +1,17 @@
-name: Install Argo CD on DOKS
+name: Bootstrap DOKS
 
 on:
   push:
     branches:
       - main
     paths:
-      - "infrastructure/**"      
+      - "bootstrap/**"      
 
 env:
   DIGITALOCEAN_CLUSTER_NAME: abhi-playground
 
 jobs:
-  install-argocd:
+  bootstrap-apps:
     runs-on: ubuntu-latest
     steps:
       - name: Install doctl
@@ -30,21 +30,10 @@ jobs:
           version: 'latest' 
         id: install
 
-      - name: Install ArgoCD
+      - name: Install child apps
         run: |
           namespaceStatus=$(kubectl get ns argocd -o json | jq .status.phase -r)
-          if ! [ $namespaceStatus == "Active" ]; then
-          kubectl create namespace argocd
-          kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+          if [ $namespaceStatus == "Active" ]; then
+          kubectl apply -n -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main/bootstrap/bootstrap.yaml
           fi
-
-      - name: Useful default vars
-        run: |
-          echo "Workflow name:  $GITHUB_WORKFLOW"
-          echo "Workspace:      $GITHUB_WORKSPACE"
-          echo "Event:          $GITHUB_EVENT_NAME"
-          echo "SHA:            $GITHUB_SHA"
-          echo "Ref:            $GITHUB_REF" 
-          echo ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
-          echo $ARGO_PWD
           
