@@ -34,6 +34,6 @@ jobs:
         run: |
           namespaceStatus=$(kubectl get ns argocd -o json | jq .status.phase -r)
           if [ $namespaceStatus == "Active" ]; then
-          kubectl apply -n -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main/bootstrap/bootstrap.yaml
+          kubectl apply -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main/bootstrap/bootstrap.yaml
           fi
           
