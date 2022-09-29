@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: .
+    path: bootstrap
     repoURL: https://github.com/hivenetes/bootstrap-doks
     targetRevision: HEAD
   syncPolicy:

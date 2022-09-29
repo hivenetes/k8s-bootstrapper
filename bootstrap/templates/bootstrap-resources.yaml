@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap-resources
+    path: bootstrap/bootstrap-resources
     repoURL: https://github.com/hivenetes/bootstrap-doks
     targetRevision: HEAD
     helm:
