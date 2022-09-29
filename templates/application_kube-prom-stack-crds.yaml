@@ -5,7 +5,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    link.argocd.argoproj.io/external-link: https://app.komodor.com/main/deep-dive/alex-jones.demo-observability.prometheus-observability-kube-prometh-prometheus
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

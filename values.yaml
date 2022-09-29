@@ -1,17 +1,18 @@
 # Global
 ## Set this to create nginx for argocd and other services
-domain: cnskunkworks.io 
-storageClass: "mayastor-3"
+# domain: heartbyte.io
+storageClass: "do-block-storage"
 # Application specific
 observability:
   pdkey:
   storageSize: 50Gi
   retention: 5d
 trivy:
-  enable: false
+  enable: true
 komodor:
   enable: false
-  key:
-  clustername:
+  key: 
+  clustername: 
 logging:
-  enable: true
+  enable: false
+    

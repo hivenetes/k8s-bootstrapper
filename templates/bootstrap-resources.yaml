@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: bootstrap-resources
-    repoURL: https://github.com/cloud-native-skunkworks/gitops-kubernetes-bootstrap
+    repoURL: https://github.com/hivenetes/bootstrap-doks
     targetRevision: HEAD
     helm:
       parameters:
