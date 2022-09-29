@@ -14,5 +14,5 @@ komodor:
   key: 
   clustername: 
 logging:
-  enable: false
+  enable: true
     
