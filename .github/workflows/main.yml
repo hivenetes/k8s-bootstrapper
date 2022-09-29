@@ -37,14 +37,3 @@ jobs:
           kubectl create namespace argocd
           kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
           fi
-
-      - name: Useful default vars
-        run: |
-          echo "Workflow name:  $GITHUB_WORKFLOW"
-          echo "Workspace:      $GITHUB_WORKSPACE"
-          echo "Event:          $GITHUB_EVENT_NAME"
-          echo "SHA:            $GITHUB_SHA"
-          echo "Ref:            $GITHUB_REF" 
-          echo ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
-          echo $ARGO_PWD
-          
