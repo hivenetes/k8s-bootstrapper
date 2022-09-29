@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cats
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+ project: default
+ source:
+  repoURL: 'https://github.com/hivenetes/cats'
+  path: .
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values.yaml
+    parameters:
+      - name: image.tag
+        value: main
+      - name: storageclass
+        value: {{ .Values.storageClass }}
+ destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: cats
+ syncPolicy:
+  automated: {}
+  syncOptions:
+    - CreateNamespace=true

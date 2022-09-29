@@ -1,0 +1,29 @@
+{{- if .Values.trivy.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trivy-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  source:
+    chart: trivy-operator
+    repoURL: https://aquasecurity.github.io/helm-charts/
+    targetRevision: 0.1.5
+    helm:
+      values: |
+        serviceMonitor:
+          enabled: true # has to be false if you do not have Prometheus already installed
+        trivy:
+          ignoreUnfixed: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: trivy-system
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
