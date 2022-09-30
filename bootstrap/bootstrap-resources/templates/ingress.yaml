@@ -17,12 +17,12 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: cats
             port: 
-                number: 8001
+                number: 8080
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
