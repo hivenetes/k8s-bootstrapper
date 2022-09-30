@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+ project: default
+ source:
+  repoURL: 'https://github.com/hivenetes/hive'
+  path: charts/guestbook
+  targetRevision: HEAD
+  helm:
+    valueFiles:
+      - values.yaml
+ destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: guestbook
+ syncPolicy:
+  automated: {}
+  syncOptions:
+    - CreateNamespace=true
