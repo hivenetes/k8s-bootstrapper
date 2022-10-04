@@ -30,10 +30,14 @@ jobs:
           version: 'latest' 
         id: install
 
+      - name: Install kubernetes-sigs/metrics-server
+        run: |
+          kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+    
       - name: Install child apps
         run: |
           namespaceStatus=$(kubectl get ns argocd -o json | jq .status.phase -r)
           if [ $namespaceStatus == "Active" ]; then
           kubectl apply -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main/bootstrap/bootstrap.yaml
-          fi
+          fi    
           
