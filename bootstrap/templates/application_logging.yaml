@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: 'https://grafana.github.io/helm-charts'
     targetRevision: 2.8.3
-    chart: grafana/loki-stack
+    chart: loki-stack
     # helm:
     #   parameters:
     #   - name: gateway.enabled
