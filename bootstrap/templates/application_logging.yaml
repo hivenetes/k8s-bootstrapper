@@ -12,12 +12,12 @@ spec:
   project: default
   source:
     repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: 0.56.7
-    chart: loki-distributed
-    helm:
-      parameters:
-      - name: gateway.enabled
-        value: "false"
+    targetRevision: 2.8.3
+    chart: grafana/loki-stack
+    # helm:
+    #   parameters:
+    #   - name: gateway.enabled
+    #     value: "false"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: observability
@@ -27,3 +27,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
 {{- end }}
+#http://loki.observability.svc.cluster.local:3100
