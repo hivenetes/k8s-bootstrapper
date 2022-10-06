@@ -28,8 +28,8 @@ resource "digitalocean_kubernetes_cluster" "abhi-playground" {
     # show droplet sizes with the command doctl compute size list
     size       = "s-4vcpu-8gb-amd"
     auto_scale = true
-    min_nodes  = 3
-    max_nodes  = 5
+    min_nodes  = 5
+    max_nodes  = 7
   }
 }
 
