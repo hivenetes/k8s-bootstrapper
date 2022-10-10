@@ -5,6 +5,13 @@
       source = "digitalocean/digitalocean"
     }
   }
+    cloud {
+      organization = "diabhey"
+  
+      workspaces {
+        name = "bootstrap-doks"
+      }
+    }
 }
 
 provider "digitalocean" {
