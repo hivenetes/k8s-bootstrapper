@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths:
-      - "infrastructure/**"      
+      - "!**/README.md"
+      - "!.github/workflows/**"
+      - "!bootstrap/**"
 
 env:
   DIGITALOCEAN_CLUSTER_NAME: abhi-playground
