@@ -10,7 +10,7 @@ on:
       - "!bootstrap/**"
 
 env:
-  DIGITALOCEAN_CLUSTER_NAME: abhi-playground
+  DIGITALOCEAN_CLUSTER_NAME: abhi-doks-staging
 
 jobs:
   install-argocd:
