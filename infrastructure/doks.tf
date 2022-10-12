@@ -5,11 +5,12 @@
       source = "digitalocean/digitalocean"
     }
   }
+  # Enable the "cloud" block if you are using Terraform cloud 
     cloud {
       organization = "diabhey"
   
       workspaces {
-        name = "bootstrap-doks"
+        name = "dev"
       }
     }
 }
@@ -18,30 +19,28 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-resource "digitalocean_kubernetes_cluster" "abhi-playground" {
-  name   = "abhi-playground" // variable it
-  # Find and change the value to an availble datacenter region close to you
-  # See DO datacenter regions with the command doctl compute region list
-  region = "ams3" // variable it
-  auto_upgrade = true
-  # Grab the latest DO Kubernetes version slug 
-  # See the available versions with the command doctl kubernetes options versions
-  version = "1.24.4-do.0" //variable it
-  ha = true
+resource "digitalocean_kubernetes_cluster" "cluster" {
+  name         = var.name
+  region       = var.region
+  version      = var.k8s_version
+  vpc_uuid     = var.vpc_uuid
+  auto_upgrade = var.auto_upgrade
+  surge_upgrade = var.surge_upgrade
+  ha           = var.ha
 
   node_pool {
-    name       = "island-pool"
-    # This is a Basic AMD Droplet with 2 vCPUs and 4GB RAM
-    # show droplet sizes with the command doctl compute size list
-    size       = "s-4vcpu-8gb-amd"
-    auto_scale = true
-    min_nodes  = 5
-    max_nodes  = 7
+    name = var.node_pool.name
+    size = var.node_pool.size
+    node_count = var.node_pool.node_count
+    auto_scale = var.node_pool.auto_scale
+    min_nodes = var.node_pool.min_nodes
+    max_nodes = var.node_pool.max_nodes
   }
+
 }
 
 # Create a new container registry
-resource "digitalocean_container_registry" "abhi-playground-cr" {
-  name                   = "abhi-playground-cr"
+resource "digitalocean_container_registry" "registry" {
+  name                   = var.container_registry
   subscription_tier_slug = "basic"
 }
