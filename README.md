@@ -1,4 +1,4 @@
-# DOKS Bootstrapper:  An extendable framework for simplified K8s adoption
+# DOKS Bootstrapper:  An extendable framework for simplified cluster bootstrapping
 
 Bootstrapping a DigitalOcean Kubernetes Cluster(DOKS) using Terraform and Argo CD. 
 
@@ -8,6 +8,7 @@ The goal of this framework is to aid the
 **Who is this for?**
 - Kubernetes adopters
 - SMBs who are looking to speed up the k8s adoption
+- Builders and curious souls
 
 ## Prerequisites
 - [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli)
@@ -38,10 +39,10 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 # Get the argo password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+# Expose the argocd-server and login with the credentials on localhost:8080
+kubectl -n argocd port-forward svc/argocd-server 8080:80
 ```
-
-> Expose the argocd-server and login with the credentials on localhost:8080
-
 
 ## Let the bootstrap begin
 

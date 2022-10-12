@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cats
+  name: bots
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
  project: default
  source:
-  repoURL: 'https://github.com/hivenetes/cats'
+  repoURL: 'https://github.com/hivenetes/bots'
   path: .
   targetRevision: HEAD
   helm:
@@ -21,7 +21,7 @@ spec:
         value: {{ .Values.storageClass }}
  destination:
   server: 'https://kubernetes.default.svc'
-  namespace: cats
+  namespace: bots
  syncPolicy:
   automated: {}
   syncOptions:
