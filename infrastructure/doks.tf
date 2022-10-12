@@ -6,11 +6,11 @@
     }
   }
   # Enable the "cloud" block if you are using Terraform cloud 
+  # Swap workspaces between "staging" and "dev"
     cloud {
       organization = "diabhey"
-  
       workspaces {
-        name = "dev"
+        name = "staging"
       }
     }
 }
