@@ -1,0 +1,15 @@
+# DigitalOcean infrastructure setup terraform variables
+# Note: `check variables.tf` more default values and modify as deem fit
+
+# DigitalOcean API token: begins with "dop_v1..."
+do_token = ""
+# DigitalOcean cluster name
+name = ""
+# DigitalOcean cluster region: default "ams3"
+region = "" 
+# DigitalOcean K8s version: default = "1.24.4-do.0"
+k8s_version = ""
+# DigitalOcean HighAvailability Control Plane: default = true
+ha = ""
+# DigitalOcean Container Registry(DOCR): default = "bootstrap-doks-cr"
+container_registry = ""

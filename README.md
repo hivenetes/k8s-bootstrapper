@@ -22,10 +22,17 @@ The terraform module will create a DigitalOcean Kubernetes cluster[(DOKS)](https
 ```bash=
 git clone https://digitalocean.github.io/k8s-adoption-journey/
 cd infrastructure
-terraform init && terraform apply --auto-approve
-# var.do_token = <paste the DigitalOcean Access Token in the prompt>
+# Initialise terraform modules
+terraform init
+# Modify the `variables.tfvars` as per your requirements
+# To view the infra plan
+terraform plan -var-file="variables.tfvars.example"
+# To apply the infra plan
+terraform apply -var-file="variables.tfvars.example" --auto-approve
 ```
-> *The installation of Argo CD and child applications have been automated as part of Github Actions CI.* For manual trigger, copy and paste the commands in a terminal.
+> NOTE:
+Intended for experimentation/evaluation ONLY.
+You will be responsible for all infrastructure costs incurred by the used resources.
 
 ## Install Argo CD
 
