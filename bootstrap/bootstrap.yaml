@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: bootstrap
-    repoURL: https://github.com/hivenetes/bootstrap-doks
+    repoURL: https://github.com/hivenetes/k8s-bootstrapper
     targetRevision: HEAD
   syncPolicy:
     automated:
