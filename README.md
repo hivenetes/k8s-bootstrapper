@@ -1,9 +1,8 @@
-# DOKS Bootstrapper:  An extendable framework for simplified cluster bootstrapping
+# Kubernetes Bootstrapper:  An extendable framework to set up production grade clusters
 
-Bootstrapping a DigitalOcean Kubernetes Cluster(DOKS) using Terraform and Argo CD. 
+Bootstrapping a Kubernetes cluster using Terraform and Argo CD, powered by DigitalOcean.
 
-The goal of this framework is to aid the 
-[kubernetes adoption journey](https://digitalocean.github.io/k8s-adoption-journey/) of startups and SMBs. 
+The goal of this framework is to aid the [kubernetes adoption journey](https://try.digitalocean.com/kubernetes-adoption-journey/) of startups and SMBs. 
 
 **Who is this for?**
 - Kubernetes adopters
@@ -30,7 +29,7 @@ terraform init && terraform apply --auto-approve
 
 ## Install Argo CD
 
-We have leveraged [argocd: app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap DOKS.
+We have leveraged [argocd: app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap Kubernetes cluster.
 
 ```bash
 # Once the cluster is up and running
