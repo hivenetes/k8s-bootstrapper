@@ -1,3 +1,4 @@
+{{- if .Values.bots.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -26,3 +27,4 @@ spec:
   automated: {}
   syncOptions:
     - CreateNamespace=true
+{{- end }}

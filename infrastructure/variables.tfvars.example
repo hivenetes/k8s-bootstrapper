@@ -11,5 +11,5 @@ region = ""
 k8s_version = ""
 # DigitalOcean HighAvailability Control Plane: default = true
 ha = ""
-# DigitalOcean Container Registry(DOCR): default = "bootstrap-doks-cr"
+# DigitalOcean Container Registry(DOCR): default = "hivenetes-cr"
 container_registry = ""

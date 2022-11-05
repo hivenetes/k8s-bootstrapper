@@ -56,7 +56,5 @@ variable "tags" {
 # DOCR
 variable "container_registry" {
     type        = string
-    default =   "bootstrap-doks-cr"
+    default =   "hivenetes-cr"
 }
-
-
