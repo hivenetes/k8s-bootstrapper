@@ -53,9 +53,6 @@ Follow this [one-click guide](https://docs.digitalocean.com/products/container-r
 doctl registry login
 ```
 
-
-
-
 ## Install Argo CD: Declarative Continuous Delivery for Kubernetes
 
 We have leveraged [argocd: app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap the Kubernetes cluster.
@@ -84,3 +81,6 @@ kubectl apply -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main
 
 ### Overview of the bootstrapped cluster
 ![bd](bootstrapped-doks.png)
+
+## Shoutout
+This project takes inspiration from the amazing work done by [Alex Jones](https://github.com/AlexsJones/) of [Cloud Native Skunkworks.](https://www.cloudnativeskunkworks.io/)
