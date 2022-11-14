@@ -76,7 +76,7 @@ kubectl -n argocd port-forward svc/argocd-server 8080:80
 
 ```bash
 # Install industry standard open source tools to build a production grade stack
-kubectl apply -f https://raw.githubusercontent.com/hivenetes/bootstrap-doks/main/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
 ```
 
 ### Overview of the bootstrapped cluster
