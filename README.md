@@ -19,9 +19,9 @@ The goal of this framework is to aid the [kubernetes adoption journey](https://t
 - [DO Access Token (used by Terraform and GH Actions)](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
 - [k9s (optional)](https://k9scli.io/topics/install/)
 
-
-## Set up the infrastructure on DigitalOcean
-The terraform module will create a DigitalOcean Kubernetes cluster[(DOKS)](https://docs.digitalocean.com/reference/api/create-personal-access-token/) and a DigitalOcean Container Registry([DOCR](https://docs.digitalocean.com/reference/api/create-personal-access-token/))
+---
+## Set up the infrastructure on DigitalOcean 
+The terraform module will create a DigitalOcean Kubernetes cluster[(DOKS)](https://docs.digitalocean.com/reference/api/create-personal-access-token/) and a DigitalOcean Container Registry([DOCR.](https://docs.digitalocean.com/reference/api/create-personal-access-token/))
 
 ```bash
 git clone https://github.com/hivenetes/k8s-bootstrapper.git
@@ -39,23 +39,26 @@ terraform apply -var-file="variables.tfvars.example" --auto-approve
 # Example: doctl kubernetes cluster kubeconfig save e74d2c45-c513-4c45-9ca3-f592ece1be76
 doctl kubernetes cluster kubeconfig save <cluster-id>
 ```
-
-> *NOTE*:
-Intended for experimentation/evaluation ONLY.
-You will be responsible for all infrastructure costs incurred by the used resources.
-
-## Authenticate with DigitalOcean Container Registry
+### Authenticate with DigitalOcean Container Registry
 
 Follow this [one-click guide](https://docs.digitalocean.com/products/container-registry/how-to/use-registry-docker-kubernetes/#kubernetes-integration) to integrate the registry with the Kubernetes cluster.
 
-```bash
-# This command adds credentials to docker so that pull and push commands to your DigitalOcean registry will be authenticated
-doctl registry login
-```
+> **NOTE**:
+Intended for experimentation/evaluation ONLY.
+You will be responsible for all infrastructure costs incurred by the used resources.
+
+---
+### **Alternatively**: Set up infrastructure on DigitalOcean using [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/)
+
+- [Set up DigitalOcean Kubernetes Cluster](https://github.com/digitalocean/Kubernetes-Starter-Kit-Developers/tree/main/01-setup-DOKS)
+- [Set up DigitalOcean Container Registry](https://github.com/digitalocean/Kubernetes-Starter-Kit-Developers/tree/main/02-setup-DOCR)
+
+---
+
 
 ## Install Argo CD: Declarative Continuous Delivery for Kubernetes
 
-We have leveraged [argocd: app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap the Kubernetes cluster.
+We have leveraged [Argo CD: App of Apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap the Kubernetes cluster.
 
 ```bash
 # Once the cluster is up and running
@@ -71,11 +74,11 @@ kubectl -n argocd port-forward svc/argocd-server 8080:80
 # Open the browser and go to localhost:8080 to access Argo CD UI
 # Login with username: `admin`, password: `paste the value from the previous step`
 ```
-
+---
 ## Let the bootstrap begin
 
 ```bash
-# Install industry standard open source tools to build a production grade stack
+# Install industry standard open source tools to build a production grade k8s stack
 kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
 ```
 
@@ -83,4 +86,4 @@ kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/ma
 ![bd](bootstrapped-doks.png)
 
 ## Shoutout
-This project takes inspiration from the amazing work done by [Alex Jones](https://github.com/AlexsJones/) of [Cloud Native Skunkworks.](https://www.cloudnativeskunkworks.io/)
+This project takes inspiration from the amazing work done by [Alex Jones](https://twitter.com/AlexJonesax) of [Cloud Native Skunkworks.](https://www.cloudnativeskunkworks.io/)
