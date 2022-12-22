@@ -16,4 +16,4 @@ observability:
   storageSize: 50Gi
   retention: 5d
 trivy:
-  enable: true
+  enable: false
