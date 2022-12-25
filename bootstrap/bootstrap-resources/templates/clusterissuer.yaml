@@ -1,6 +1,6 @@
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-ci
-spec:
-  selfSigned: {}
+# apiVersion: cert-manager.io/v1
+# kind: ClusterIssuer
+# metadata:
+#   name: letsencrypt-ci
+# spec:
+#   selfSigned: {}
