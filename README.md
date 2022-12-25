@@ -63,7 +63,7 @@ We have leveraged [Argo CD: App of Apps pattern](https://argo-cd.readthedocs.io/
 ```bash
 # Once the cluster is up and running
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml
 
 # Get the argo password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
