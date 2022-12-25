@@ -25,6 +25,7 @@ metadata:
     kubernetes.io/tls-acme: 'true'
     nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
     nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   ingressClassName: nginx
   tls:
