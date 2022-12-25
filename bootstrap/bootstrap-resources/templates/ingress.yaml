@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - argocd.{{ .Values.domain }}
-    secretName: nginx-argo-tls
+    secretName: argocd-secret
   rules:
   - host: argocd.{{ .Values.domain }}
     http:
@@ -23,11 +23,7 @@ spec:
             name: argocd-server
             port:
                 name: https
-                # number: 8080
-  tls:
-  - hosts:
-    - argocd.hivenetes.com
-    secretName: argocd-secret # do not change, this is provided by Argo CD                
+                # number: 8080            
 
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
