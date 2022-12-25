@@ -17,12 +17,17 @@ spec:
     http:
       paths:
       - path: /
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: argocd-server
-            port: 
-                number: 8080
+            port:
+                name: https
+                # number: 8080
+  tls:
+  - hosts:
+    - argocd.hivenetes.com
+    secretName: argocd-secret # do not change, this is provided by Argo CD                
 
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
