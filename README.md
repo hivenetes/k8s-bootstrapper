@@ -79,7 +79,7 @@ kubectl -n argocd port-forward svc/argocd-server 8080:80
 
 ```bash
 # Install industry standard open source tools to build a production grade k8s stack
-kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/diabhey/argo-ochestrator/main/bootstrap/bootstrap.yaml
 ```
 
 ### Overview of the bootstrapped cluster
@@ -87,3 +87,6 @@ kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/ma
 
 ## Shoutout
 This project takes inspiration from the amazing work done by [Alex Jones](https://twitter.com/AlexJonesax) of [Cloud Native Skunkworks.](https://www.cloudnativeskunkworks.io/)
+
+
+EpuxOnzzXEsEg6J8%
