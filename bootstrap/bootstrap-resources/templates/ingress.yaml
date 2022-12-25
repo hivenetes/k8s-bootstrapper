@@ -4,7 +4,7 @@ metadata:
   name: argocd-issuer-argocd-letsencrypt
 spec:
   acme:
-    email: a@b
+    email: hivenetes@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: argocd-letsencrypt-private-key
