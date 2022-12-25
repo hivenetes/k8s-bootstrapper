@@ -1,6 +1,6 @@
 # Global
 ## Set this to create nginx for argocd and other services
-domain: hivenetes.com
+domain: heartbyte.io
 storageClass: "do-block-storage"
 # Application specific
 bots:
