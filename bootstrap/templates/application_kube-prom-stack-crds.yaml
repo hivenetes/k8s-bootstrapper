@@ -1,3 +1,4 @@
+{{- if .Values.observability.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -25,3 +26,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+{{- end }}

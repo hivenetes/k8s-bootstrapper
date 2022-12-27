@@ -1,3 +1,4 @@
+{{- if .Values.nginx.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -21,3 +22,4 @@ spec:
       prune: true
     syncOptions:
     - CreateNamespace=true
+{{- end }}

@@ -1,28 +1,28 @@
-{{- if .Values.domain }}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-bots
-  namespace: bots
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-ci"
-spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-    - bots.{{ .Values.domain }}
-    secretName: nginx-bots-tls
-  rules:
-  - host: bots.{{ .Values.domain }}
-    http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: bots
-            port: 
-                number: 8080
+{{- if .Values.bots.enable }}
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-bots
+#   namespace: bots
+#   annotations:
+#     cert-manager.io/cluster-issuer: "letsencrypt-ci"
+# spec:
+#   ingressClassName: nginx
+#   tls:
+#   - hosts:
+#     - bots.{{ .Values.domain }}
+#     secretName: nginx-bots-tls
+#   rules:
+#   - host: bots.{{ .Values.domain }}
+#     http:
+#       paths:
+#       - path: /
+#         pathType: ImplementationSpecific
+#         backend:
+#           service:
+#             name: bots
+#             port: 
+#                 number: 8080
 # ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress

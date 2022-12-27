@@ -1,19 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap
+  name: traefik
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"  
 spec:
   destination:
-    namespace: argocd
+    namespace: traefik
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap
-    repoURL: https://github.com/diabhey/argo-ochestrator
-    targetRevision: HEAD
+    chart: traefik
+    helm:
+    repoURL: https://traefik.github.io/charts
+    targetRevision: v20.8.0
   syncPolicy:
     automated:
-      selfHeal: true
+      prune: true
     syncOptions:
     - CreateNamespace=true

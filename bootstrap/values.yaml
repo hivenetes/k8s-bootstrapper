@@ -1,6 +1,6 @@
 # Global
 ## Set this to create nginx for argocd and other services
-domain:
+domain: heartbyte.io
 storageClass: "do-block-storage"
 # Application specific
 bots:
@@ -11,7 +11,10 @@ kyverno:
   enable: false  
 logging:
   enable: false
+nginx:
+  enable: false  
 observability:
+  enable: false
   pdkey:
   storageSize: 50Gi
   retention: 5d

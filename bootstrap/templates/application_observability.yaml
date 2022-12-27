@@ -1,3 +1,4 @@
+{{- if .Values.observability.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -53,7 +54,6 @@ spec:
               type: tempo
               url: http://tempo.observability.svc.cluster.local:3100
 
-
     chart: kube-prometheus-stack
   destination:
     server: 'https://kubernetes.default.svc'
@@ -62,3 +62,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+{{- end }}
