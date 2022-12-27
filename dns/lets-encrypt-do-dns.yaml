@@ -1,3 +1,4 @@
+# This secret is referenced in bootstrap/bootstrap-resources/templates/cluster-issuer.yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -5,4 +6,4 @@ metadata:
   name: lets-encrypt-do-dns
 data:
   # Add your DigitalOcean API key
-  access-token: <redacted>
+  access-token: <insert your encoded api key>
