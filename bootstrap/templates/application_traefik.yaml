@@ -1,25 +1,20 @@
-{{- if .Values.nginx.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: traefik
   namespace: argocd
 spec:
   destination:
-    namespace: nginx-ingress
+    namespace: traefik
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: nginx-ingress
+    chart: traefik
     helm:
-      parameters:
-      - name: controller.kind
-        value: daemonset
-    repoURL: https://helm.nginx.com/stable
-    targetRevision: 0.14.0
+    repoURL: https://traefik.github.io/charts
+    targetRevision: v20.8.0
   syncPolicy:
     automated:
       prune: true
     syncOptions:
     - CreateNamespace=true
-{{- end }}

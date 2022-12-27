@@ -11,6 +11,8 @@ kyverno:
   enable: false  
 logging:
   enable: false
+nginx:
+  enable: false  
 observability:
   enable: false
   pdkey:
