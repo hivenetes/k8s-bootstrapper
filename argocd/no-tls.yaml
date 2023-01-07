@@ -1,4 +1,4 @@
-# kubectl patch deployment -n argocd argocd-server --patch-file no-tls.yaml
+# kubectl patch deployment -n argocd argocd-server --patch-file argocd/no-tls.yaml
 spec:
   template:
     spec:

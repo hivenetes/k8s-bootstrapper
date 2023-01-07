@@ -1,46 +1,32 @@
-
- terraform {
-  required_providers {
-    digitalocean = {
-      source = "digitalocean/digitalocean"
-    }
-  }
-  # Enable the "cloud" block if you are using Terraform cloud 
-  # Swap workspaces between "staging" and "dev"
-    # cloud {
-    #   organization = "diabhey"
-    #   workspaces {
-    #     name = "staging"
-    #   }
-    # }
+resource "random_id" "cluster_name" {
+  byte_length = 5
 }
 
-provider "digitalocean" {
-  token = var.do_token
+locals {
+  doks_cluster_name = "${var.doks_cluster_name_prefix}-${random_id.cluster_name.hex}"
 }
 
-resource "digitalocean_kubernetes_cluster" "cluster" {
-  name         = var.name
-  region       = var.region
-  version      = var.k8s_version
-  vpc_uuid     = var.vpc_uuid
-  auto_upgrade = var.auto_upgrade
-  surge_upgrade = var.surge_upgrade
-  ha           = var.ha
+data "digitalocean_kubernetes_versions" "current" {
+  version_prefix = var.doks_k8s_version
+}
+
+resource "digitalocean_kubernetes_cluster" "bootstrapper" {
+  name    = local.doks_cluster_name
+  region  = var.doks_cluster_region
+  version = data.digitalocean_kubernetes_versions.current.latest_version
 
   node_pool {
-    name = var.node_pool.name
-    size = var.node_pool.size
-    node_count = var.node_pool.node_count
-    auto_scale = var.node_pool.auto_scale
-    min_nodes = var.node_pool.min_nodes
-    max_nodes = var.node_pool.max_nodes
+    name       = var.doks_default_node_pool["name"]
+    size       = var.doks_default_node_pool["size"]
+    node_count = var.doks_default_node_pool["node_count"]
   }
-
 }
 
-# Create a new container registry
-resource "digitalocean_container_registry" "registry" {
-  name                   = var.container_registry
-  subscription_tier_slug = "basic"
+resource "digitalocean_kubernetes_node_pool" "bootstrapper_extra_node_pool" {
+  cluster_id = digitalocean_kubernetes_cluster.bootstrapper.id
+  for_each   = var.doks_additional_node_pools
+
+  name       = each.key
+  size       = each.value.size
+  node_count = each.value.node_count
 }
