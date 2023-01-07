@@ -1,0 +1,13 @@
+# kubectl patch cm argocd-cm -n argocd  --patch-file argocd/sso-patch.yaml
+data:
+  url: https://argocd.heartbyte.io
+  admin.enabled: "false"
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: <redacted>
+          clientSecret: <redacted>
+          loadAllGroups: true       
