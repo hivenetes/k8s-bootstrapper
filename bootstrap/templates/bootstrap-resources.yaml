@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: bootstrap/bootstrap-resources
-    repoURL: https://github.com/diabhey/argo-ochestrator
+    repoURL: https://github.com/hivenetes/k8s-bootstrapper
     targetRevision: HEAD
     helm:
       parameters:
