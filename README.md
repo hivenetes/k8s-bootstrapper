@@ -16,7 +16,7 @@ This framework aims to aid the [kubernetes adoption journey](https://try.digital
 - [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - [DigitalOcean Cloud Account](https://cloud.digitalocean.com/)
-- [DO Access Token (used by Terraform and GH Actions)](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
+- [DO Access Token (used by Terraform, DNS config)](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
 - [k9s (optional)](https://k9scli.io/topics/install/)
 
 ---
@@ -119,6 +119,10 @@ cd infrastructure
 terraform destroy --var-file=bootstrapper.tfvars --auto-approve
 # Bye Bye !!
 ```
+
+## Media/Demos
+- [Blog: Build your own K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
+- [Workshop: DigitalOcean Deploy Conference 2022](https://youtu.be/PfoB2e95VjQ)
 
 ### Shoutout
 This project takes inspiration from the fantastic work done by [Alex Jones](https://twitter.com/AlexJonesax) of [Cloud Native Skunkworks.](https://www.cloudnativeskunkworks.io/)
