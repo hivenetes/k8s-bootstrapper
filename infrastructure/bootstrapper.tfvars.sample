@@ -28,7 +28,6 @@ doks_additional_node_pools = {
 
 # ================================== ARGOCD CONFIG ==================================
 
-# ArgoCD Helm release is disabled for now because it is not working properly in Terraform
 enable_argocd_helm_release        = true
 argocd_helm_repo                  = "https://argoproj.github.io/argo-helm"
 argocd_helm_chart                 = "argo-cd"

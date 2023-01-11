@@ -77,35 +77,23 @@ To access Argo CD via an FQDN, we need to configure a few things,
 # Disable internal TLS to avoid internal redirection loops from HTTP to HTTPS, the API server should be run with TLS disabled.
 kubectl patch deployment -n argocd argocd-server --patch-file argocd/no-tls.yaml
 
-# Encode the access key to use it in Kubernetes Secret
-echo -n 'dop_v1_4321...' | base64
-```
-Add the **encoded key** to the `/dns/lets-encrypt-do-dns.yaml` file
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: cert-manager
-  name: lets-encrypt-do-dns
-data:
-  access-token: ZG9wX3Y...
+# lets-encrypt-do-dns secret required for dns01 challenge
+# @param access-token: DO access token 
+kubectl create ns cert-manager && 
+kubectl create -n cert-manager secret generic lets-encrypt-do-dns \
+--from-literal=access-token=<insert DO access token> 
 ```
 
-```bash
-# Create the secret in the cert-manager namespace
-kubectl create namespace cert-manager
-kubectl apply -f dns/lets-encrypt-do-dns.yaml  
-```
 ---
 ## Let the bootstrap begin
+
+Check out [this doc](./bootstrap/README.md) for more details on app configurations and the boostrap process.
 
 ```bash
 # Install industry-standard open-source tools to build a production-grade k8s stack
 kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
 # **_NOTE:_**  One can login to ArgoCD UI to monitor the bootstrapped cluster
 ```
-
-
 
 ### Overview of the bootstrapped cluster
 ![bd](docs/bootstrapped-doks.png)
