@@ -1,8 +1,8 @@
 # Kubernetes Bootstrapper:  An extendable framework to set up production-grade clusters
 
-![kb](docs/k8s-bootstrapper.png)
-
 Bootstrapping a Kubernetes cluster using Terraform and Argo CD, powered by DigitalOcean.
+
+![kb](./docs/assets/k8s-bootstrapper.png)
 
 This framework aims to aid the [kubernetes adoption journey](https://try.digitalocean.com/kubernetes-adoption-journey/) of startups and SMBs. 
 
@@ -85,6 +85,11 @@ kubectl create -n cert-manager secret generic lets-encrypt-do-dns \
 ```
 
 ---
+## Observability using Robusta (optional)
+Check out [Set up Observability Stack using Robusta](./observability/README.md) for more details.
+
+---
+
 ## Let the bootstrap begin
 
 Check out [this doc](./bootstrap/README.md) for more details on app configurations and the boostrap process.
@@ -92,11 +97,10 @@ Check out [this doc](./bootstrap/README.md) for more details on app configuratio
 ```bash
 # Install industry-standard open-source tools to build a production-grade k8s stack
 kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
-# **_NOTE:_**  One can login to ArgoCD UI to monitor the bootstrapped cluster
 ```
 
 ### Overview of the bootstrapped cluster
-![bd](docs/bootstrapped-doks.png)
+![bd](./docs/assets/bootstrapped-doks.png)
 
 
 ## Tear down the Bootstrapped cluster
