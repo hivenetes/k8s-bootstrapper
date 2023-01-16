@@ -1,8 +1,10 @@
-## Bootstrap
+# Bootstrapping using Argo CD
 
-The bootstrapper leverages the "App of Apps" pattern, and we use Helm to achieve this. 
+## Introduction
+The k8s-bootstrapper leverages the [Argo CD's App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) pattern. We use Helm to achieve this.
 
 ```bash
+# Bootstrap
 .
 ├── Chart.yaml # boiler plate chart.yaml
 ├── README.md 
@@ -41,7 +43,14 @@ trivy:
 ```
 > **Note:** Save changes to the file as deemed fit and push the changes to the git repository. The bootstrapper follows a strict GitOps workflow, so all the changes need to be pushed to git to reflect the changes in the Kubernetes cluster.
 
-**Access the ArgoCD Web UI**
+## Boostrapping
+
+```bash
+# Let the bootstrap begin!
+kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
+```
+
+### Access the ArgoCD Web UI
 ```bash
 # Get the argo password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
@@ -50,5 +59,8 @@ kubectl -n argocd port-forward svc/argocd-server 8080:80
 # Open the browser and go to localhost:8080 to access Argo CD UI
 # Login with username: `admin,` password: `paste the value from the previous step.`
 ```
+>Note: [**Accessing Argo CD via FQDN (optional)**](../argocd/README.md)
 
 ![argocd-ui](../docs/assets/argocd-ui.png)
+
+[**Next steps »**](../observability/README.md)
