@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "argocd",
+        "bootstrapper",
+        "commandline",
+        "docr",
+        "doctl",
+        "doks",
+        "kubeconfig",
+        "kyverno",
+        "pdkey",
+        "Robusta",
+        "Skunkworks",
+        "tfvars",
+        "traefik",
+        "trivy"
+    ]
+}
