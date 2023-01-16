@@ -4,7 +4,7 @@
 
 With many cloud-native solutions popping up daily, it can be pretty daunting for engineers and organizations to choose the "right" tools to build their tech. It becomes all the more challenging to integrate them to get to **day-2 operations ready** in Kubernetes.
 
-The [**k8s-bootstrapper**](https://argo-cd.readthedocs.io/en/stable/) project is a customizable and extendable framework that aims to solve this problem by leveraging
+The [**k8s-bootstrapper**](https://github.com/hivenetes/k8s-bootstrapper) project is a customizable and extendable framework that aims to solve this problem by leveraging
 
 - [Terraform](https://www.terraform.io/): Compose a production-ready infrastructure on DigitalOcean
 - [Argo CD](https://argo-cd.readthedocs.io/en/stable/): Application configuration management and delivery using GitOps
