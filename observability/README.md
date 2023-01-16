@@ -1,6 +1,7 @@
 # Set up Observability Stack using Robusta
 
 [Robusta](https://github.com/robusta-dev/robusta) is open source Kubernetes monitoring, troubleshooting, and automation platform which comes pre-baked with
+
 - Embedded Prometheus stack with pre-configured alerts
 - A web UI to see all alerts, changes, and events in your cluster
 - Multi-cluster observability
@@ -16,6 +17,7 @@
     ```
 
 2. Generate a values file for Helm:
+
     ```bash
     # An interactive session where you can configure sinks such as receiving the alerts to a particular slack channel, etc. 
 
@@ -23,6 +25,7 @@
     ```
 
 3. Install Robusta with Helm:
+
     ```commandline
     helm repo add robusta https://robusta-charts.storage.googleapis.com && helm repo update
     helm install robusta robusta/robusta -f ./generated_values.yaml

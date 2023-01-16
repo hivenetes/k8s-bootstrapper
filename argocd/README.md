@@ -1,15 +1,17 @@
 # DNS Setup for Argo CD (optional)
 
 ## Overview
+
 To access Argo CD via an FQDN, we need to configure a few things.
 
 ### Prerequisites
+
 - A domain (example.com)
 - [Personal Access Token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) for [DigitalOcean DNS](https://docs.digitalocean.com/products/networking/dns/) access
 
-
 ## Apply Configurations
-```bash    
+
+```bash
 # Disable internal TLS to avoid internal redirection loops from HTTP to HTTPS. The API server should run with TLS disabled.    
 kubectl patch deployment -n argocd argocd-server --patch-file argocd/no-tls.yaml 
 # lets-encrypt-do-dns secret required for dns01 challenge    
