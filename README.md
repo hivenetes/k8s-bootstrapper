@@ -1,119 +1,66 @@
-# Kubernetes Bootstrapper:  An extendable framework to set up production-grade clusters
+# Kubernetes Bootstrapper: An Extendable Framework to Set Up Production-Grade Clusters
 
-Bootstrapping a Kubernetes cluster using Terraform and Argo CD, powered by DigitalOcean.
+## Introduction
+With many cloud-native solutions popping up daily, it can be pretty daunting for engineers and organisations to choose the "right" tools to build their tech. It becomes all the more challenging to integrate them to get to **day-2 operations ready** in Kubernetes. 
 
-![kb](./docs/assets/k8s-bootstrapper.png)
+The [**k8s-bootstrapper**](https://argo-cd.readthedocs.io/en/stable/) project is a customizable and extendable framework that aims to solve this problem by leveraging
+ - [Terraform](https://www.terraform.io/): Compose a production-ready infrastructure on DigitalOcean
+ - [Argo CD](https://argo-cd.readthedocs.io/en/stable/): Application configuration management and delivery using GitOps
 
-This framework aims to aid the [kubernetes adoption journey](https://try.digitalocean.com/kubernetes-adoption-journey/) of startups and SMBs. 
+This project integrates popular battle-tested open-source software and solutions that provide a production-grade out-of-box Kubernetes experience.
 
-**Who is this for?**
+*Target Audience*
 - Kubernetes adopters
-- SMBs who are looking to speed up the k8s adoption
+- Startups/SMBs who are looking to speed up the Kubernetes adoption
 - Builders and curious souls
 
-## Prerequisites
-- [terraform cli](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-- [DigitalOcean Cloud Account](https://cloud.digitalocean.com/)
-- [DO Access Token (used by Terraform, DNS config)](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
-- [k9s (optional)](https://k9scli.io/topics/install/)
+<p align="center">
+<img src="./docs/assets/k8s-bootstrapper.png" alt="k8s-bootstrapper" height=500 width=800>
+</p>
 
----
-## Set up the infrastructure on DigitalOcean using Terraform 
-The terraform module will create 
-- DigitalOcean Kubernetes cluster[(DOKS)](https://docs.digitalocean.com/products/kubernetes/) 
-- DigitalOcean Container Registry([DOCR](https://docs.digitalocean.com/products/container-registry/))
-- Installs [ArgoCD Helm Chart](https://artifacthub.io/packages/helm/argo/argo-cd) on the DOKS cluster
+----
+
+## Overview
 
 ```bash
-git clone https://github.com/hivenetes/k8s-bootstrapper.git
-cd infrastructure
-# Initialise terraform modules
-terraform init
-# Copy the sample tfvars file
-cp bootstrapper.tfvars.sample bootstrapper.tfvars
-# Modify the `bootstrapper.tfvars` file 
-# Example: `do_token=<your access token>`
-terraform plan --var-file=bootstrapper.tfvars -out tf-bootstrapper.out
-# To apply the infra plan
-terraform apply "tf-bootstrapper.out" --auto-approve
-# Once terraform has executed the plan, it will output the "cluster_id.”
-# To update cluster credentials to kubeconfig and set up the current context run,
-# Example: doctl kubernetes cluster kubeconfig save e74d2c45-c513-4c45-9ca3-f592ece1be76
-doctl kubernetes cluster kubeconfig save <cluster-id>
+.
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+├── README.md 
+├── argocd # Argo CD configurations (optional)
+├── bootstrap # cluster bootstrapping using Argo CD
+├── docs # documents and assets
+├── infrastructure # infrastructure automation using Terraform
+└── observability # set up observability stack 
 ```
-### Authenticate with DigitalOcean Container Registry
 
-Follow this [one-click guide](https://docs.digitalocean.com/products/container-registry/how-to/use-registry-docker-kubernetes/#kubernetes-integration) to integrate the registry with the Kubernetes cluster.
+Follow the guide in the order stated below:
+1. [DigitalOcean Infrastructure Automation via Terraform ](./infrastructure/terraform/README.md)
+2. [Bootstrapping using Argo CD](./bootstrap/README.md)
+3. [Set up Observability using Robusta](./observability/README.md)
 
-> **NOTE**:
-Intended for experimentation/evaluation ONLY.
+Here is the overview of the architecture that we will set up:
+
+<p align="center">
+<img src="./docs/assets/bootstrapper-overview.png" alt="boot-overview"/>
+</p>
+
+> **Note**:
+Intended for experimentation/evaluation only.
 You will be responsible for all infrastructure costs incurred by the used resources.
 
----
+### Tear down the Bootstrapped cluster
 
-## Argo CD: Declarative Continuous Delivery for Kubernetes
-
-We have leveraged [Argo CD: App of Apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/) to bootstrap the Kubernetes cluster.
-
+Had fun trying out the *k8s-bootstrapper*? Time to say goodbye!
 ```bash
-# Get the argo password
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
-# Expose the argocd-server and login with the credentials on localhost:8080
-kubectl -n argocd port-forward svc/argocd-server 8080:80
-# Open the browser and go to localhost:8080 to access Argo CD UI
-# Login with username: `admin,` password: `paste the value from the previous step.`
-```
----
-### DNS Setup for Argo CD (optional)
-To access Argo CD via an FQDN, we need to configure a few things, 
-
-**Prerequisites**
-- A domain (example.com)
-- [Personal Access Token](https://docs.digitalocean.com/reference/api/create-personal-access-token/) for [DigitalOcean DNS](https://docs.digitalocean.com/products/networking/dns/) access
-
-```bash
-# Disable internal TLS to avoid internal redirection loops from HTTP to HTTPS, the API server should be run with TLS disabled.
-kubectl patch deployment -n argocd argocd-server --patch-file argocd/no-tls.yaml
-
-# lets-encrypt-do-dns secret required for dns01 challenge
-# @param access-token: DO access token 
-kubectl create ns cert-manager && 
-kubectl create -n cert-manager secret generic lets-encrypt-do-dns \
---from-literal=access-token=<insert DO access token> 
-```
-
----
-## Observability using Robusta (optional)
-Check out [Set up Observability Stack using Robusta](./observability/README.md) for more details.
-
----
-
-## Let the bootstrap begin
-
-Check out [this doc](./bootstrap/README.md) for more details on app configurations and the boostrap process.
-
-```bash
-# Install industry-standard open-source tools to build a production-grade k8s stack
-kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
-```
-
-### Overview of the bootstrapped cluster
-![bd](./docs/assets/bootstrapped-doks.png)
-
-
-## Tear down the Bootstrapped cluster
-
-```bash
-# Simply run
-cd infrastructure
+# Run
+cd infrastructure/terraform
 terraform destroy --var-file=bootstrapper.tfvars --auto-approve
-# Bye Bye !!
+# Bye Bye!
 ```
-
+---
 ## Media/Demos
-- [Blog: Build your own K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
+- [Blog: Build your K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
 - [Workshop: DigitalOcean Deploy Conference 2022](https://youtu.be/PfoB2e95VjQ)
 
 ### Shoutout
