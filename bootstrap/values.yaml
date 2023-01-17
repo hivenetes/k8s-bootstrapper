@@ -18,4 +18,4 @@ observability:
 traefik:
   enable: true  
 trivy:
-  enable: false
+  enable: true
