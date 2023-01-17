@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         serviceMonitor:
-          enabled: true # has to be false if you do not have Prometheus already installed
+          enabled: false # has to be false if you do not have Prometheus already installed
         trivy:
           ignoreUnfixed: true
   destination:
