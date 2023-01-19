@@ -69,7 +69,7 @@ terraform destroy --var-file=bootstrapper.tfvars --auto-approve
 ----
 
 ## Media/Demos
-
+- [Featured in akuity/awesome-argo](https://github.com/akuity/awesome-argo#ecosystem-projects)
 - [Blog: Build your K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
 - [Workshop: DigitalOcean Deploy Conference 2022](https://youtu.be/PfoB2e95VjQ)
 
