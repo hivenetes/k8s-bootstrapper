@@ -37,6 +37,8 @@ This project integrates popular battle-tested open-source software and solutions
 └── observability # set up observability stack 
 ```
 
+### Bootstrap the Kubernetes Cluster
+
 Follow the guide in the order stated below:
 
 1. [DigitalOcean Infrastructure Automation via Terraform](./infrastructure/terraform/README.md)
@@ -53,7 +55,7 @@ Here is the overview of the architecture that we will set up:
 Intended for experimentation/evaluation only.
 You will be responsible for all infrastructure costs incurred by the used resources.
 
-### Tear down the Bootstrapped cluster
+### Tear down the Bootstrapped Cluster
 
 Had fun trying out the *k8s-bootstrapper*? Time to say goodbye!
 
