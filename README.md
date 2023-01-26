@@ -5,7 +5,7 @@
 "*Production-grade*" is a loaded term. What constitutes production readiness will vary according to your use case. While a Kubernetes cluster is production-ready the moment it is ready to serve traffic, there is a commonly agreed set of minimum requirements, as shown in the infographic below.
 
 <p align="center">
-<img src="./docs/assets/pionative.png" alt="k8s-prod" height=500 width=800>
+<img src="./docs/assets/pionative.png" alt="k8s-prod" width=800>
 </p>
 
 With [many cloud-native solutions](https://landscape.cncf.io/) popping up daily, it can be pretty daunting for engineers and organizations to choose the "right" tools to build their tech. It becomes all the more challenging to integrate them to get to **day-2 operations ready** in Kubernetes.
@@ -26,7 +26,7 @@ This project integrates popular battle-tested open-source software and solutions
 - Builders and curious souls
 
 <p align="center">
-<img src="./docs/assets/k8s-bootstrapper.png" alt="k8s-bootstrapper" height=450 width=800>
+<img src="./docs/assets/k8s-bootstrapper.png" alt="k8s-bootstrapper" width=800>
 </p>
 
 ----
