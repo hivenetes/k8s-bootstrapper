@@ -1,5 +1,5 @@
 # Global
-domain: 
+domain: heartbyte.io
 storageClass: "do-block-storage"
 # Application specific
 bots:
