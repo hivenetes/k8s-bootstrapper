@@ -49,7 +49,7 @@ trivy:
 
 ```bash
 # Let the bootstrap begin!
-kubectl apply -f https://github.com/hivenetes/k8s-bootstrapper/blob/feat/demo/bootstrap/bootstrap.yaml
+kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/feat/demo/bootstrap/bootstrap.yaml
 ```
 
 ### Access the ArgoCD Web UI
