@@ -1,1 +1,3 @@
-domain: heartbyte.io
+domain:
+bots:
+  enable: false
