@@ -48,6 +48,13 @@ trivy:
 ## Bootstrapping
 
 ```bash
+# lets-encrypt-do-dns secret required for dns01 challenge    
+# @param access-token: DO access token  
+kubectl create ns cert-manager && 
+kubectl create -n cert-manager secret generic lets-encrypt-do-dns --from-literal=access-token=<insert DO access token>
+```
+
+```bash
 # Let the bootstrap begin!
 kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/feat/demo/bootstrap/bootstrap.yaml
 ```
