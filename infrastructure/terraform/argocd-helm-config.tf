@@ -10,8 +10,8 @@ resource "helm_release" "argocd" {
 
 
   # Additional Helm values
-
-  values = [
-    file(var.argocd_additional_helm_values_file)
-  ]
+  # Enable if you want to install high-availability argocd
+  # values = [
+  #   file(var.argocd_additional_helm_values_file)
+  # ]
 }
