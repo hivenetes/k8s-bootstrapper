@@ -1,4 +1,3 @@
-{{- if .Values.domain }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -10,6 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
   rules:
+  # Add domain
     - host: argocd.{{ .Values.domain }}
       http:
         paths:
@@ -23,5 +23,5 @@ spec:
   tls:
     - secretName: argocd-secret-tls
       hosts:
+      # Add domain
         - argocd.{{ .Values.domain }}
-{{- end }}
