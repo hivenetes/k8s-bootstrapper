@@ -3,7 +3,7 @@ domain: heartbyte.io
 storageClass: "do-block-storage"
 # Application specific
 bots:
-  enable: true
+  enable: false
 guestbook:
   enable: false
 kyverno:
