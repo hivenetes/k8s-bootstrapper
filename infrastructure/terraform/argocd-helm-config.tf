@@ -11,7 +11,7 @@ resource "helm_release" "argocd" {
 
   # Additional Helm values
 
-  values = [
-    file(var.argocd_additional_helm_values_file)
-  ]
+#  values = [
+#    file(var.argocd_additional_helm_values_file)
+#  ]
 }

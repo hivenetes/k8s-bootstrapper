@@ -22,11 +22,11 @@ resource "digitalocean_kubernetes_cluster" "bootstrapper" {
   }
 }
 
-resource "digitalocean_kubernetes_node_pool" "bootstrapper_extra_node_pool" {
-  cluster_id = digitalocean_kubernetes_cluster.bootstrapper.id
-  for_each   = var.doks_additional_node_pools
-
-  name       = each.key
-  size       = each.value.size
-  node_count = each.value.node_count
-}
+#resource "digitalocean_kubernetes_node_pool" "bootstrapper_extra_node_pool" {
+#  cluster_id = digitalocean_kubernetes_cluster.bootstrapper.id
+#  for_each   = var.doks_additional_node_pools
+#
+#  name       = each.key
+#  size       = each.value.size
+#  node_count = each.value.node_count
+#}
