@@ -39,7 +39,41 @@ variable "doks_additional_node_pools" {
   description = "DOKS cluster extra node pool configuration"
 }
 
-# ===================== DOKS CONFIG VARS =======================
+# ===================== DO S3 SPACES CONFIG VARS =======================
+
+variable "enable_external_s3" {
+  type        = bool
+  default     = false
+  description = "Enable external S3 for Loki persistent data (DO Spaces)"
+}
+
+variable "s3_bucket_name" {
+  type        = string
+  default     = "bob"
+  description = "Loki DO Spaces S3 bucket name"
+}
+
+variable "s3_bucket_region" {
+  type        = string
+  default     = "ams3"
+  description = "Loki DO Spaces S3 bucket region"
+}
+
+variable "s3_bucket_access_key_id" {
+  type        = string
+  sensitive   = true
+  default     = ""
+  description = "Loki DO Spaces S3 bucket access key id"
+}
+
+variable "s3_bucket_access_key_secret" {
+  type        = string
+  sensitive   = true
+  default     = ""
+  description = "Loki DO Spaces S3 bucket access key secret"
+}
+
+# ========================== DOKS CONFIG VARS ==========================
 variable "container_registry" {
   type    = string
   default = "bootstrapper-cr"

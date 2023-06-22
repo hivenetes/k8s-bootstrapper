@@ -26,6 +26,18 @@ doks_additional_node_pools = {
   }
 }
 
+# ======================= EXTERNAL SPACES S3 CONFIG (DigitalOcean MANAGED) =========================
+
+enable_external_s3          = true
+s3_bucket_name              = <YOUR_DO_SPACES_BUCKET_NAME_HERE>
+s3_bucket_region            = <YOUR_DO_SPACES_BUCKET_REGION_HERE>
+s3_bucket_access_key_id     = <YOUR_DO_SPACES_ACCESS_KEY_HERE>
+s3_bucket_access_key_secret = <YOUR_DO_SPACES_SECRET_KEY_HERE>
+
+# ======================= DIGITALOCEAN CONTAINER REGISTRY (DOCR) =========================
+
+container_registry = "<YOUR_DO_CONTAINER_REGISTRY_NAME>"
+
 # ================================== ARGOCD CONFIG ==================================
 
 # ArgoCD Helm release is disabled for now because it is not working properly in Terraform
