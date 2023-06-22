@@ -1,3 +1,5 @@
 bots:
   enable: false
-domain: 
+emojivoto:
+  enable: true  
+domain: hivenetes.com

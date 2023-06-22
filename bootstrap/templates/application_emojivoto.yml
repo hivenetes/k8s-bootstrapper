@@ -1,0 +1,22 @@
+{{- if .Values.emojivoto.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: emojivoto
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+ project: default
+ source:
+  repoURL: 'https://github.com/digitalocean/kubernetes-sample-apps'
+  path: emojivoto-example/kustomize
+  targetRevision: HEAD
+ destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: emojivoto
+ syncPolicy:
+  automated: {}
+  syncOptions:
+    - CreateNamespace=true
+{{- end }}

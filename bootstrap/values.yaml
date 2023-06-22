@@ -1,5 +1,5 @@
 # Global
-domain: 
+domain: hivenetes.com
 storageClass: "do-block-storage"
 # Application specific
 bots:
@@ -18,4 +18,6 @@ observability:
 traefik:
   enable: true  
 trivy:
+  enable: true
+emojivoto:
   enable: true

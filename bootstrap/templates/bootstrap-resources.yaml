@@ -11,7 +11,7 @@ spec:
   source:
     path: bootstrap/bootstrap-resources
     repoURL: https://github.com/hivenetes/k8s-bootstrapper
-    targetRevision: HEAD
+    targetRevision: loki-spaces-demo
     helm:
       parameters:
         - name: domain

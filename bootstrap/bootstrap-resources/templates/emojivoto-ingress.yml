@@ -1,0 +1,28 @@
+{{- if .Values.emojivoto.enable }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-emojivoto
+  namespace: emojivoto
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - emojivoto.{{ .Values.domain }}
+    secretName: emojivoto-secret-tls
+  rules:
+  - host: emojivoto.{{ .Values.domain }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web-svc
+            port: 
+                number: 8080               
+{{- end }}

@@ -11,7 +11,7 @@ spec:
   source:
     path: bootstrap
     repoURL: https://github.com/hivenetes/k8s-bootstrapper
-    targetRevision: HEAD
+    targetRevision: loki-spaces-demo
   syncPolicy:
     automated:
       selfHeal: true
