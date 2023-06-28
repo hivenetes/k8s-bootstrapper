@@ -21,7 +21,7 @@ By default, we have disabled most of the apps, but you can easily enable them by
 ```yaml
 # values.yaml
 # Global
-domain: 
+domain: <your domain>
 storageClass: "do-block-storage"
 # Application specific
 bots:
@@ -40,7 +40,10 @@ observability:
 traefik:
   enable: true  
 trivy:
-  enable: false
+  enable: true
+# We will be installng this application for the lokis-spaces demo  
+emojivoto:
+  enable: true
 ```
 
 > **Note:** Save changes to the file as deemed fit and push the changes to the git repository. The bootstrapper follows a strict GitOps workflow, so all the changes need to be pushed to git to reflect the changes in the Kubernetes cluster.
@@ -48,6 +51,12 @@ trivy:
 ## Bootstrapping
 
 ```bash
+# This is needed fo the DNS challenge if you want to access the emojivoto application via a domain
+# Skip otherwise
+kubectl create ns cert-manager && \
+kubectl create -n cert-manager secret generic lets-encrypt-do-dns --from-literal=access-token=<DO_ACCESS_TOKEN>
+
+# This is a mandatory step
 # Let the bootstrap begin!
 kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/loki-spaces-demo/bootstrap/bootstrap.yaml
 ```
@@ -66,5 +75,3 @@ kubectl -n argocd port-forward svc/argocd-server 8080:80
 >Note: [**Accessing Argo CD via FQDN (optional)**](../argocd/README.md)
 
 ![argocd-ui](../docs/assets/argocd-ui.png)
-
-[**Next steps »**](../observability/README.md)
