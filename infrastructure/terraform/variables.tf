@@ -27,8 +27,11 @@ variable "doks_default_node_pool" {
   type = map(any)
   default = {
     name       = "bootstrapper-default"
-    node_count = 2
+    node_count = 3
     size       = "s-2vcpu-4gb"
+    auto_scale = true
+    min_nodes = 3
+    max_nodes = 5
   }
   description = "DOKS cluster default node pool configuration"
 }
