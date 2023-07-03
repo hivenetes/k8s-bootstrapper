@@ -14,12 +14,15 @@ resource "digitalocean_kubernetes_cluster" "bootstrapper" {
   name    = local.doks_cluster_name
   region  = var.doks_cluster_region
   version = data.digitalocean_kubernetes_versions.current.latest_version
-  ha = true
+  ha      = true
 
   node_pool {
     name       = var.doks_default_node_pool["name"]
     size       = var.doks_default_node_pool["size"]
     node_count = var.doks_default_node_pool["node_count"]
+    auto_scale = var.doks_default_node_pool["auto_scale"]
+    min_nodes  = var.doks_default_node_pool["min_nodes"]
+    max_nodes  = var.doks_default_node_pool["max_nodes"]
   }
 }
 

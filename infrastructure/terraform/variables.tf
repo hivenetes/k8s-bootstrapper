@@ -39,10 +39,16 @@ variable "doks_additional_node_pools" {
   description = "DOKS cluster extra node pool configuration"
 }
 
-# ===================== DOKS CONFIG VARS =======================
+# ===================== DOCR CONFIG VARS =======================
 variable "container_registry" {
   type    = string
   default = "bootstrapper-cr"
+}
+
+variable "enable_container_registry" {
+  type        = bool
+  default     = false
+  description = "Enable/disable DigitalOcean Container Registry"
 }
 
 # ===================== ARGOCD HELM CONFIG VARS =======================

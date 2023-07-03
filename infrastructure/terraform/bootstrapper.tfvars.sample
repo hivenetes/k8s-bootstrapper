@@ -13,6 +13,9 @@ doks_default_node_pool = {
   name       = "bootstrapper-main"
   node_count = 3
   size       = "s-2vcpu-4gb"
+  auto_scale = true
+  min_nodes  = 3
+  max_nodes  = 5  
 }
 
 # Create additional DOKS node pools 
@@ -25,6 +28,10 @@ doks_additional_node_pools = {
     size       = "s-2vcpu-4gb"
   }
 }
+
+# ======================= DIGITALOCEAN CONTAINER REGISTRY (DOCR) =========================
+# Set the flag to 'true' to enable DOCR
+enable_container_registry        = false
 
 # ================================== ARGOCD CONFIG ==================================
 
