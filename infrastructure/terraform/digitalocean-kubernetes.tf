@@ -14,6 +14,7 @@ resource "digitalocean_kubernetes_cluster" "bootstrapper" {
   name    = local.doks_cluster_name
   region  = var.doks_cluster_region
   version = data.digitalocean_kubernetes_versions.current.latest_version
+  ha = true
 
   node_pool {
     name       = var.doks_default_node_pool["name"]
