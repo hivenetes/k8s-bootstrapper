@@ -76,7 +76,13 @@ terraform destroy --var-file=bootstrapper.tfvars --auto-approve
 
 ----
 
-##  Media/Demos
+## Demos
+
+*k8s-bootstrapper* in action
+
+- [DOKS Application Log Monitoring and Retention using Grafana Loki and DigitalOcean Spaces](https://github.com/hivenetes/k8s-bootstrapper/tree/loki-spaces-demo/demo/loki-spaces)
+
+##  Media
 
 - [YouTube: Project Overview](https://www.youtube.com/watch?v=p_4Qj3z6EDQ)
 - [Blog: Build your K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
