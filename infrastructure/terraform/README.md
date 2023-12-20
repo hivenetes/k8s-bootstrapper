@@ -28,6 +28,25 @@ All essential aspects are configured via Terraform input variables. In addition,
 
 Follow the below steps to get started:
 
+**Important:** List Kubernetes versions that can be used with DigitalOcean clusters.
+
+```bash
+doctl k8s options versions
+
+Slug           Kubernetes Version    Supported Features
+1.28.2-do.0    1.28.2                cluster-autoscaler, docr-integration, ha-control-plane, token-authentication
+1.27.6-do.0    1.27.6                cluster-autoscaler, docr-integration, ha-control-plane, token-authentication
+```
+Choose the corresponding `Slug` and in the `variables.tf` file, modify the default value of the `doks_k8s_version` variable with the chosen Slug.
+
+```hcl
+variable "doks_k8s_version" {
+  type        = string
+  default     = "1.28.2-do.0"
+  description = "DOKS Kubernetes version"
+}
+```
+
 1. Clone this repo and change the directory to `infrastructure/terraform`
 2. Initialize Terraform backend:
 
