@@ -34,6 +34,14 @@ variable "doks_default_node_pool" {
     max_nodes = 5
   }
   description = "DOKS cluster default node pool configuration"
+  validation {
+    condition     = var.doks_default_node_pool["node_count"] >= var.doks_default_node_pool["min_nodes"]
+    error_message = "This application requires at least ${var.doks_default_node_pool["min_nodes"]} nodes in the cluster."
+  }
+  validation {
+    condition     = var.doks_default_node_pool["node_count"] <= var.doks_default_node_pool["max_nodes"]
+    error_message = "This application allows at most ${var.doks_default_node_pool["max_nodes"]} nodes in the cluster."
+  }
 }
 
 variable "doks_additional_node_pools" {
