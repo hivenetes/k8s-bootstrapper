@@ -4,7 +4,7 @@ do_token = "dop_v1..."
 # ============================== DOKS CONFIG ==============================
 
 doks_cluster_name_prefix = "k8s-bootstrapper"
-doks_k8s_version         = "1.25"
+doks_k8s_version         = "1.29"
 doks_cluster_region      = "ams3"
 
 # Main pool configuration (REQUIRED)
