@@ -1,6 +1,6 @@
 # ===================== DO CONFIG VARS =======================
 variable "do_token" {
-  description = "Personal Access Token to access the DigtialOcean API)"
+  description = "Personal Access Token to access the DigitalOcean API"
 }
 
 # ===================== DOKS CONFIG VARS =======================
@@ -13,7 +13,7 @@ variable "doks_cluster_name_prefix" {
 
 variable "doks_k8s_version" {
   type        = string
-  default     = "1.27.2-do.0"
+  default     = "1.29.1-do.0"
   description = "DOKS Kubernetes version"
 }
 
