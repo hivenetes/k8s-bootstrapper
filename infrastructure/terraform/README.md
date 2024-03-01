@@ -52,12 +52,6 @@ Follow the below steps to get started:
     ```console
     doctl k8s options versions
     ```
-    ```bash
-    Slug           Kubernetes Version    Supported Features
-    1.29.1-do.0     1.29.1                cluster-autoscaler, docr-integration, ha-control-plane, token-authentication
-    1.28.6-do.0     1.28.6                cluster-autoscaler, docr-integration, ha-control-plane, token-authentication
-    ...
-    ```
 
     Choose the corresponding `Slug` and set the `doks_k8s_version` variable with the chosen Slug. If you forget to change this, and the default version in `variables.tf` no longer is supported, you will get an error saying "The argument "version" is required, but no definition was found."
 
