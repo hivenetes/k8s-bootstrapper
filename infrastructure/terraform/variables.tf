@@ -90,7 +90,7 @@ variable "argocd_helm_release_name" {
 
 variable "argocd_helm_chart_version" {
   type        = string
-  default     = "5.16.14"
+  default     = "6.5.0"
   description = "ArgoCD Helm chart version to deploy"
 }
 variable "argocd_helm_chart_timeout_seconds" {
