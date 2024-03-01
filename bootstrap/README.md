@@ -43,13 +43,13 @@ trivy:
   enable: false
 ```
 
-> **Note:** Save changes to the file as deemed fit and push the changes to the git repository. The bootstrapper follows a strict GitOps workflow, so all the changes need to be pushed to git to reflect the changes in the Kubernetes cluster.
+> **Note:** Save changes to the file as deemed fit and push the changes to your git repository. The bootstrapper follows a strict GitOps workflow, so all the changes need to be pushed to git to reflect the changes in the Kubernetes cluster. If you made changes, update bootstrap.yaml to use your `repoURL`. 
 
 ## Bootstrapping
 
 ```bash
 # Let the bootstrap begin!
-kubectl apply -f https://raw.githubusercontent.com/hivenetes/k8s-bootstrapper/main/bootstrap/bootstrap.yaml
+kubectl apply -f bootstrap/bootstrap.yaml
 ```
 
 ### Access the ArgoCD Web UI
