@@ -4,7 +4,7 @@ do_token = "dop_v1..."
 # ============================== DOKS CONFIG ==============================
 
 doks_cluster_name_prefix = "k8s-bootstrapper"
-doks_k8s_version         = "1.25"
+doks_k8s_version         = "1.29"
 doks_cluster_region      = "ams3"
 
 # Main pool configuration (REQUIRED)
@@ -39,7 +39,7 @@ enable_container_registry        = false
 enable_argocd_helm_release        = true
 argocd_helm_repo                  = "https://argoproj.github.io/argo-helm"
 argocd_helm_chart                 = "argo-cd"
-argocd_helm_chart_version         = "5.16.14"
+argocd_helm_chart_version         = "6.5.0"
 argocd_helm_release_name          = "argocd"
 argocd_helm_chart_timeout_seconds = 600
 argocd_k8s_namespace              = "argocd"

@@ -1,6 +1,6 @@
 # ===================== DO CONFIG VARS =======================
 variable "do_token" {
-  description = "Personal Access Token to access the DigtialOcean API)"
+  description = "Personal Access Token to access the DigitalOcean API"
 }
 
 # ===================== DOKS CONFIG VARS =======================
@@ -13,7 +13,7 @@ variable "doks_cluster_name_prefix" {
 
 variable "doks_k8s_version" {
   type        = string
-  default     = "1.27.2-do.0"
+  default     = "1.29.1-do.0"
   description = "DOKS Kubernetes version"
 }
 
@@ -90,7 +90,7 @@ variable "argocd_helm_release_name" {
 
 variable "argocd_helm_chart_version" {
   type        = string
-  default     = "5.16.14"
+  default     = "6.5.0"
   description = "ArgoCD Helm chart version to deploy"
 }
 variable "argocd_helm_chart_timeout_seconds" {
