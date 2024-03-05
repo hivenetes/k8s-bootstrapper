@@ -8,6 +8,11 @@ output "cluster_name" {
 }
 
 # ======================= DIGITALOCEAN DATABASES =========================
+output "database_id" {
+  value = var.enable_databases ? digitalocean_database_cluster.bootstrapper[0].id : null
+  description = "Database ID"
+}
+
 output "database_uri" {
   value = var.enable_databases ? digitalocean_database_cluster.bootstrapper[0].uri : null
   description = "Database URI"
