@@ -42,9 +42,9 @@ output "database_password" {
 
 # ================================== ARGOCD ==================================
 output "argocd_helm_chart_values" {
-  value = helm_release.argocd[0].values
+  value = var.enable_argocd_helm_release ? helm_release.argocd[0].values : null
 }
 
 output "argocd_helm_chart_manifest" {
-  value = helm_release.argocd[0].manifest
+  value = var.enable_argocd_helm_release ? helm_release.argocd[0].manifest : null
 }
