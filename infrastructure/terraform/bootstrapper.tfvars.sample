@@ -33,6 +33,10 @@ doks_additional_node_pools = {
 # Set the flag to 'true' to enable DOCR
 enable_container_registry        = false
 
+# =============================== DIGITALOCEAN DATABASES =================================
+# Set the flag to 'true' to enable Databases
+enable_databases                 = false
+
 # ================================== ARGOCD CONFIG ==================================
 
 # ArgoCD Helm release is disabled for now because it is not working properly in Terraform

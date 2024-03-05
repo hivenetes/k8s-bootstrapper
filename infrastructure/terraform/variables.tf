@@ -62,6 +62,50 @@ variable "enable_container_registry" {
   description = "Enable/disable DigitalOcean Container Registry"
 }
 
+# ===================== DigitalOcean Databases CONFIG VARS =======================
+variable "enable_databases" {
+  type        = bool
+  default     = false
+  description = "Enable/disable DigitalOcean Databases"
+}
+
+# DigitalOcean Database Cluster
+variable "database_cluster_name_prefix" {
+  type        = string
+  default     = "bootstrapper-db"
+  description = "DigitalOcean Databases cluster name"
+}
+
+variable "database_cluster_engine" {
+  type        = string
+  default     = "pg" #postgres
+  description = "DigitalOcean Databases cluster engine"
+}
+
+variable "database_cluster_size" {
+  type        = string
+  default     = "db-s-1vcpu-1gb"
+  description = "DigitalOcean Databases cluster size"
+}
+
+variable "database_cluster_region" {
+  type        = string
+  default     = "nyc3"
+  description = "DigitalOcean Databases cluster region"
+}
+
+variable "database_cluster_version" {
+  type        = string
+  default     = "16"
+  description = "DigitalOcean Databases cluster version"
+}
+
+variable "database_cluster_node_count" {
+  type        = number
+  default     = 1
+  description = "DigitalOcean Databases cluster node count"
+}
+
 # ===================== ARGOCD HELM CONFIG VARS =======================
 
 variable "enable_argocd_helm_release" {
