@@ -51,7 +51,7 @@ variable "doks_additional_node_pools" {
 }
 
 # ===================== DOCR CONFIG VARS =======================
-variable "container_registry" {
+variable "container_registry_name" {
   type    = string
   default = "bootstrapper-cr"
 }
