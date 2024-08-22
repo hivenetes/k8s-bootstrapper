@@ -1,4 +1,4 @@
-# ============================== DOKS ==============================
+# ================================ DOKS ================================
 output "cluster_id" {
   value = digitalocean_kubernetes_cluster.bootstrapper.id
 }
@@ -7,7 +7,13 @@ output "cluster_name" {
   value = digitalocean_kubernetes_cluster.bootstrapper.name
 }
 
-# ======================= DIGITALOCEAN DATABASES =========================
+# ================== DIGITALOCEAN CONTAINER REGISTRY ====================
+output "container_registry_name" {
+  value = var.enable_container_registry ? digitalocean_container_registry.registry[0].name : null
+  description = "Container Registry name"
+}
+
+# ======================= DIGITALOCEAN DATABASES ========================
 output "database_id" {
   value = var.enable_databases ? digitalocean_database_cluster.bootstrapper[0].id : null
   description = "Database ID"
