@@ -82,12 +82,16 @@ terraform destroy --var-file=bootstrapper.tfvars --auto-approve
 
 - [DOKS Application Log Monitoring and Retention using Grafana Loki and DigitalOcean Spaces](https://github.com/hivenetes/k8s-bootstrapper/tree/loki-spaces-demo/demo/loki-spaces)
 
+- [tiffanyfay/lets-generate-art](https://github.com/tiffanyfay/lets-generate-art)
+
 ##  Media
 
 - [YouTube: Project Overview](https://www.youtube.com/watch?v=p_4Qj3z6EDQ)
 - [Blog: Build your K8s framework](https://thecloudodyssey.com/build-your-own-kubernetes-framework)
 - [Workshop: DigitalOcean Deploy Conference 2022](https://youtu.be/PfoB2e95VjQ)
 - [Featured in akuity/awesome-argo](https://github.com/akuity/awesome-argo#ecosystem-projects)
+
+- [Featured in VMware Explore/ SpringOne](https://x.com/tiffanyfayj/status/1828777854995505492)
 
 ###  Shout-out
 
