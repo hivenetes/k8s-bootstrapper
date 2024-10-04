@@ -80,6 +80,7 @@ terraform destroy --var-file=bootstrapper.tfvars --auto-approve
 
 *k8s-bootstrapper* in action
 
+- [Running Mastodon on Kubernetes](https://github.com/digitalocean/mastodon-on-kubernetes)
 - [DOKS Application Log Monitoring and Retention using Grafana Loki and DigitalOcean Spaces](https://github.com/hivenetes/k8s-bootstrapper/tree/loki-spaces-demo/demo/loki-spaces)
 
 - [tiffanyfay/lets-generate-art](https://github.com/tiffanyfay/lets-generate-art)
